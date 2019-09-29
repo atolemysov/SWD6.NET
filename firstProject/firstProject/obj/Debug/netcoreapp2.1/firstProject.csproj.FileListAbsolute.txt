@@ -23,3 +23,30 @@
 /Users/nurgi17__/Projects/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/Hello/Index.g.cshtml.cs
 /Users/nurgi17__/Projects/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs
 /Users/nurgi17__/Projects/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/_ViewStart.g.cshtml.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/firstProject.deps.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/firstProject.runtimeconfig.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/firstProject.runtimeconfig.dev.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/firstProject.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/firstProject.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/firstProject.Views.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/firstProject.Views.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.csprojAssemblyReference.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.RazorAssemblyInfo.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.RazorAssemblyInfo.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.AssemblyInfoInputs.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.AssemblyInfo.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.TagHelpers.input.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.TagHelpers.output.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.RazorCoreGenerate.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.RazorTargetAssemblyInfo.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.RazorTargetAssemblyInfo.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.Views.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/firstProject.csproj.CopyComplete
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/bin/Debug/netcoreapp2.1/Properties/launchSettings.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/Hello/Index.cshtml.g.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.cshtml.g.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/_ViewStart.cshtml.g.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/Messages/ShowMessage.cshtml.g.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/Debug/netcoreapp2.1/Razor/Views/Calculator/Result.cshtml.g.cs

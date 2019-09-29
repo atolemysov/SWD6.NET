@@ -11805,11 +11805,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nurgi17__/Projects/firstProject/firstProject/firstProject.csproj",
+      "projectUniqueName": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/firstProject.csproj",
       "projectName": "firstProject",
-      "projectPath": "/Users/nurgi17__/Projects/firstProject/firstProject/firstProject.csproj",
+      "projectPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/firstProject.csproj",
       "packagesPath": "/Users/nurgi17__/.nuget/packages/",
-      "outputPath": "/Users/nurgi17__/Projects/firstProject/firstProject/obj/",
+      "outputPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -11849,16 +11849,23 @@
             "version": "[2.1.2, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

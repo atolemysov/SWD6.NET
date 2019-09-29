@@ -11,12 +11,14 @@
     <Folder Include="Views\Hello\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Messages\" />
+    <Folder Include="Views\Calculator\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="$(AspNetCoreAppRuntimeFrameworkVersion)">
       <IsImplicitlyDefined>true</IsImplicitlyDefined>
-      <PrivateAssets>All</PrivateAssets>
+      <PrivateAssets>all</PrivateAssets>
       <Publish>true</Publish>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
