@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{B62F40C0-AEC1-480A-ADEF-E4B69FE74049}|Default">
+  <MonoDevelop.Ide.ItemProperties.firstProject PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="firstProject/Views/Movies/Edit.cshtml">
+    <Files>
+      <File FileName="firstProject/Models/Movies/Movie.cs" Line="26" Column="1" />
+      <File FileName="firstProject/Data/MoviesContext.cs" Line="42" Column="24" />
+      <File FileName="firstProject/Controllers/MoviesController.cs" Line="55" Column="42" />
+      <File FileName="firstProject/Controllers/MessagesController.cs" Line="1" Column="1" />
+      <File FileName="firstProject/Views/Movies/Add.cshtml" Line="66" Column="7" />
+      <File FileName="firstProject/Views/Movies/Index.cshtml" Line="51" Column="39" />
+      <File FileName="firstProject/Controllers/HelloController.cs" Line="1" Column="1" />
+      <File FileName="firstProject/Views/Movies/Edit.cshtml" Line="5" Column="27" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="firstProject" expanded="True">
+            <Node name="firstProject" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Movies" expanded="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Movies" expanded="True">
+                  <Node name="Edit.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

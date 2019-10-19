@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="firstProject/Controllers/MoviesController.cs">
     <Files>
       <File FileName="firstProject/Data/MoviesContext.cs" Line="52" Column="10" />
-      <File FileName="firstProject/Controllers/MoviesController.cs" Line="1" Column="1" />
+      <File FileName="firstProject/Controllers/MoviesController.cs" Line="58" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
