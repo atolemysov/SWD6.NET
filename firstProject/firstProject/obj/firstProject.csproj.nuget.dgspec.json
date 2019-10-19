@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/firstProject.csproj": {}
+    "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/firstProject/firstProject/firstProject.csproj": {}
   },
   "projects": {
-    "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/firstProject.csproj": {
+    "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/firstProject/firstProject/firstProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/firstProject.csproj",
+        "projectUniqueName": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/firstProject/firstProject/firstProject.csproj",
         "projectName": "firstProject",
-        "projectPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/firstProject.csproj",
+        "projectPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/firstProject/firstProject/firstProject.csproj",
         "packagesPath": "/Users/nurgi17__/.nuget/packages/",
-        "outputPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/SWD6(dotNET)git/firstProject/firstProject/obj/",
+        "outputPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/firstProject/firstProject/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/nurgi17__/.config/NuGet/NuGet.Config"
+          "/Users/nurgi17__/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
@@ -49,6 +49,16 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[2.1.1, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
