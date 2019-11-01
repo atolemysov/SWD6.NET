@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{ADA20055-B120-4213-8D0E-837E7E93508A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="courseProject/Controllers/LoginController.cs">
+    <Files>
+      <File FileName="courseProject/Startup.cs" Line="14" Column="25" />
+      <File FileName="courseProject/Controllers/LoginController.cs" Line="20" Column="1" />
+      <File FileName="courseProject/Program.cs" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.courseProject PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

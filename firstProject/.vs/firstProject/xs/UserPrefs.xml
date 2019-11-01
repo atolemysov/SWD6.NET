@@ -3,7 +3,10 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="firstProject/Controllers/MoviesController.cs">
     <Files>
       <File FileName="firstProject/Data/MoviesContext.cs" Line="52" Column="10" />
-      <File FileName="firstProject/Controllers/MoviesController.cs" Line="58" Column="6" />
+      <File FileName="firstProject/Models/Movies/Movie.cs" />
+      <File FileName="firstProject/Program.cs" />
+      <File FileName="firstProject/Startup.cs" />
+      <File FileName="firstProject/Controllers/MoviesController.cs" Line="32" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,12 +17,15 @@
                 <Node name="MoviesController.cs" selected="True" />
               </Node>
               <Node name="Data" expanded="True" />
-              <Node name="Migrations" expanded="True">
-                <Node name="20191019000117_first.cs" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Movies" expanded="True" />
               </Node>
+              <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Movies" expanded="True" />
               </Node>
+              <Node name="wwwroot" expanded="True" />
             </Node>
           </Node>
         </State>

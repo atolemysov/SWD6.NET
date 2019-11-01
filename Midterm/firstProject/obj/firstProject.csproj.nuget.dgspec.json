@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/Users/nurgi17__/Desktop/Study/Midterm/firstProject/firstProject.csproj": {}
+    "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/Midterm/firstProject/firstProject.csproj": {}
   },
   "projects": {
-    "/Users/nurgi17__/Desktop/Study/Midterm/firstProject/firstProject.csproj": {
+    "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/Midterm/firstProject/firstProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/nurgi17__/Desktop/Study/Midterm/firstProject/firstProject.csproj",
+        "projectUniqueName": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/Midterm/firstProject/firstProject.csproj",
         "projectName": "firstProject",
-        "projectPath": "/Users/nurgi17__/Desktop/Study/Midterm/firstProject/firstProject.csproj",
+        "projectPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/Midterm/firstProject/firstProject.csproj",
         "packagesPath": "/Users/nurgi17__/.nuget/packages/",
-        "outputPath": "/Users/nurgi17__/Desktop/Study/Midterm/firstProject/obj/",
+        "outputPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/Midterm/firstProject/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/nurgi17__/.nuget/NuGet/NuGet.Config"
+          "/Users/nurgi17__/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
