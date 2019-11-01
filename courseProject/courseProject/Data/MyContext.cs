@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using courseProject.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -69,5 +69,11 @@ namespace courseProject.Data
             //Many to many User_Therapy between User and Therapy END -––––––––––––––-––––––––––––––-––––––––––––––-––––––––––––––
 
         }
+
+
+        public DbSet<courseProject.Models.User_Answers> User_Answers { get; set; }
+
+
+        public DbSet<courseProject.Models.User_Therapy> User_Therapy { get; set; }
     }
 }
