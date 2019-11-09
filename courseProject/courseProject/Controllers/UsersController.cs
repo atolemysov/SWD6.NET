@@ -22,7 +22,8 @@ namespace courseProject.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            var myContext = _context.Users.Include(u => u.User_Role);
+            return View(await myContext.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -34,6 +35,7 @@ namespace courseProject.Controllers
             }
 
             var user = await _context.Users
+                .Include(u => u.User_Role)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
@@ -46,22 +48,33 @@ namespace courseProject.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id");
             return View();
         }
-
+        
+        
         // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Login,Password,Full_Name")] User user)
+        //[AcceptVerbs("Get", "Post")] -> Remote validation
+        public async Task<IActionResult> Create([Bind("Id,Login,Password,Full_Name,RoleId")] User user)
         {
+            //Remote validation
+            //if (!_context.Find(user.Login))
+            //{
+            //    return Json($"Email {user.Login} is already in use.");
+            //}
+
+            
             if (ModelState.IsValid)
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id", user.RoleId);
             return View(user);
         }
 
@@ -78,6 +91,7 @@ namespace courseProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id", user.RoleId);
             return View(user);
         }
 
@@ -86,7 +100,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password,Full_Name")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password,Full_Name,RoleId")] User user)
         {
             if (id != user.Id)
             {
@@ -113,6 +127,7 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id", user.RoleId);
             return View(user);
         }
 
@@ -125,6 +140,7 @@ namespace courseProject.Controllers
             }
 
             var user = await _context.Users
+                .Include(u => u.User_Role)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
@@ -149,5 +165,6 @@ namespace courseProject.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
+        
     }
 }

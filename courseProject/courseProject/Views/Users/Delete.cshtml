@@ -1,7 +1,7 @@
 @model courseProject.Models.User
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Delete</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -35,6 +36,12 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Full_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User_Role.Id)
         </dd>
     </dl>
     

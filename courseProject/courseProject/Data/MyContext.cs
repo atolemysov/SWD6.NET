@@ -68,8 +68,50 @@ namespace courseProject.Data
                 .HasForeignKey(pt => pt.TherapyId);
             //Many to many User_Therapy between User and Therapy END -––––––––––––––-––––––––––––––-––––––––––––––-––––––––––––––
 
+            modelBuilder.Entity<Role>().HasData(
+                new Role
+                {
+                    Id = 1,
+                    Role_Name = "admin"
+                },
+                new Role
+                {
+                    Id = 2,
+                    Role_Name = "patient"
+                }
+                );
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    Login = "admin",
+                    Password = "admin",
+                    Full_Name = "admin",
+                    RoleId = 1
+                },
+                new User
+                {
+                    Id = 2,
+                    Login = "test",
+                    Password = "test",
+                    Full_Name = "patient 1",
+                    RoleId = 2
+                }
+                );
+
+            
         }
 
+        internal bool Find(string login)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal bool Find(User user)
+        {
+            throw new NotImplementedException();
+        }
 
         public DbSet<courseProject.Models.User_Answers> User_Answers { get; set; }
 

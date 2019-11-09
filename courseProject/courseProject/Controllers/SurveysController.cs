@@ -22,7 +22,8 @@ namespace courseProject.Controllers
         // GET: Surveys
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Surveys.ToListAsync());
+            var myContext = _context.Surveys.Include(s => s.Survey_Therapy);
+            return View(await myContext.ToListAsync());
         }
 
         // GET: Surveys/Details/5
@@ -34,6 +35,7 @@ namespace courseProject.Controllers
             }
 
             var survey = await _context.Surveys
+                .Include(s => s.Survey_Therapy)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (survey == null)
             {
@@ -46,6 +48,7 @@ namespace courseProject.Controllers
         // GET: Surveys/Create
         public IActionResult Create()
         {
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Question,Min,Desc1,Max,Desc2")] Survey survey)
+        public async Task<IActionResult> Create([Bind("Id,Question,Min,Desc1,Max,Desc2,TherapyId")] Survey survey)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace courseProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", survey.TherapyId);
             return View(survey);
         }
 
@@ -78,6 +82,7 @@ namespace courseProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", survey.TherapyId);
             return View(survey);
         }
 
@@ -86,7 +91,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Question,Min,Desc1,Max,Desc2")] Survey survey)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Question,Min,Desc1,Max,Desc2,TherapyId")] Survey survey)
         {
             if (id != survey.Id)
             {
@@ -113,6 +118,7 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", survey.TherapyId);
             return View(survey);
         }
 
@@ -125,6 +131,7 @@ namespace courseProject.Controllers
             }
 
             var survey = await _context.Surveys
+                .Include(s => s.Survey_Therapy)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (survey == null)
             {

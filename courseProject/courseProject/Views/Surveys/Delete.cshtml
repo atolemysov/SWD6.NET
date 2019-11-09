@@ -1,7 +1,7 @@
 @model courseProject.Models.Survey
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Delete</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -47,6 +48,12 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Desc2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Survey_Therapy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Survey_Therapy.Id)
         </dd>
     </dl>
     

@@ -1,7 +1,7 @@
 @model IEnumerable<courseProject.Models.Video>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
 </head>
 <body>
 <p>
@@ -24,6 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Url_Video)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Video_Therapy)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +39,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Url_Video)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Video_Therapy.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

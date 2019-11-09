@@ -22,7 +22,8 @@ namespace courseProject.Controllers
         // GET: Videos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Videos.ToListAsync());
+            var myContext = _context.Videos.Include(v => v.Video_Therapy);
+            return View(await myContext.ToListAsync());
         }
 
         // GET: Videos/Details/5
@@ -34,6 +35,7 @@ namespace courseProject.Controllers
             }
 
             var video = await _context.Videos
+                .Include(v => v.Video_Therapy)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (video == null)
             {
@@ -46,6 +48,7 @@ namespace courseProject.Controllers
         // GET: Videos/Create
         public IActionResult Create()
         {
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Desc,Url_Video")] Video video)
+        public async Task<IActionResult> Create([Bind("Id,Desc,Url_Video,TherapyId")] Video video)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace courseProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", video.TherapyId);
             return View(video);
         }
 
@@ -78,6 +82,7 @@ namespace courseProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", video.TherapyId);
             return View(video);
         }
 
@@ -86,7 +91,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Desc,Url_Video")] Video video)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Desc,Url_Video,TherapyId")] Video video)
         {
             if (id != video.Id)
             {
@@ -113,6 +118,7 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", video.TherapyId);
             return View(video);
         }
 
@@ -125,6 +131,7 @@ namespace courseProject.Controllers
             }
 
             var video = await _context.Videos
+                .Include(v => v.Video_Therapy)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (video == null)
             {

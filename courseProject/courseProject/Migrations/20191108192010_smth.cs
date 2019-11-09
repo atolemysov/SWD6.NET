@@ -2,7 +2,7 @@
 
 namespace courseProject.Migrations
 {
-    public partial class first : Migration
+    public partial class smth : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,17 +41,17 @@ namespace courseProject.Migrations
                     Login = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Full_Name = table.Column<string>(nullable: true),
-                    User_RoleId = table.Column<int>(nullable: true)
+                    RoleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Roles_User_RoleId",
-                        column: x => x.User_RoleId,
+                        name: "FK_Users_Roles_RoleId",
+                        column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -65,17 +65,17 @@ namespace courseProject.Migrations
                     Desc1 = table.Column<string>(nullable: true),
                     Max = table.Column<int>(nullable: false),
                     Desc2 = table.Column<string>(nullable: true),
-                    Survey_TherapyId = table.Column<int>(nullable: true)
+                    TherapyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Surveys", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Surveys_Therapies_Survey_TherapyId",
-                        column: x => x.Survey_TherapyId,
+                        name: "FK_Surveys_Therapies_TherapyId",
+                        column: x => x.TherapyId,
                         principalTable: "Therapies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,18 +85,18 @@ namespace courseProject.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Desc = table.Column<string>(nullable: true),
-                    Url_Video = table.Column<int>(nullable: false),
-                    Video_TherapyId = table.Column<int>(nullable: true)
+                    Url_Video = table.Column<string>(nullable: true),
+                    TherapyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Videos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Videos_Therapies_Video_TherapyId",
-                        column: x => x.Video_TherapyId,
+                        name: "FK_Videos_Therapies_TherapyId",
+                        column: x => x.TherapyId,
                         principalTable: "Therapies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,10 +148,30 @@ namespace courseProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Role_Name" },
+                values: new object[] { 1, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Role_Name" },
+                values: new object[] { 2, "patient" });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Full_Name", "Login", "Password", "RoleId" },
+                values: new object[] { 1, "admin", "admin", "admin", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Full_Name", "Login", "Password", "RoleId" },
+                values: new object[] { 2, "patient 1", "test", "test", 2 });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Surveys_Survey_TherapyId",
+                name: "IX_Surveys_TherapyId",
                 table: "Surveys",
-                column: "Survey_TherapyId");
+                column: "TherapyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_Answers_SurveyId",
@@ -164,14 +184,14 @@ namespace courseProject.Migrations
                 column: "TherapyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_User_RoleId",
+                name: "IX_Users_RoleId",
                 table: "Users",
-                column: "User_RoleId");
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Videos_Video_TherapyId",
+                name: "IX_Videos_TherapyId",
                 table: "Videos",
-                column: "Video_TherapyId");
+                column: "TherapyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
