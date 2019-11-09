@@ -4,14 +4,15 @@ SWD6 .NET task upload repository by Ussen N. CSSE-1601K (ID: 21776)
 # ICAP
 This is the code of designing the medical web application which name is "ICAP" for people who's addicted with something (f.e: drugs, alcohol, gaming and so on). Application includes admin panel for editing, deleting ,adding new users, hospitals,materials for addicted, also  interactive theraphy with surveys, questions and videos.<br>
 <strong>Design by Madina Saparbaeva</strong> (<strong>Fully Responsive</strong>)<br>
-<strong>Frontend -> HTML&CSS, SCSS, Bootstrap 4, JQuery</strong><br><br>
+<strong>Frontend -> HTML&CSS, SCSS, Bootstrap 4, JQuery</strong><br>
+<strong>Backend -> ASP.NET Core</strong><br><br>
 <hr>
 <strong>Entity Relationships</strong><br>
-One to Many: <br>
+<strong>One to Many: </strong><br>
 User - Role<br>
 Survey - Therapy<br>
-Videos - Therapy <br>
-Many to Many: <br>
+Videos - Therapy <br><br>
+<strong>Many to Many: </strong><br>
 User - Therapy <br>
 User - Survey<br>
 <hr>
