@@ -6,7 +6,9 @@ namespace courseProject.Models
 {
     public class User_Answers
     {
-        
+        //[Key]
+        //public int Id { get; set; }
+
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }

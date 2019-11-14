@@ -8,6 +8,7 @@ namespace courseProject.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         public string Role_Name { get; set; }
         public List<User> Users { get; set; }

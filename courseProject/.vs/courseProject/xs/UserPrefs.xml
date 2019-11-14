@@ -1,25 +1,26 @@
 ﻿<Properties StartupConfiguration="{ADA20055-B120-4213-8D0E-837E7E93508A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="courseProject/Models/Survey.cs">
+  <MonoDevelop.Ide.ItemProperties.Tests.UnitTest01 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="courseProject/Views/UserTherapies/Index.cshtml">
     <Files>
-      <File FileName="courseProject/Models/User.cs" Line="1" Column="1" />
-      <File FileName="courseProject/Models/Survey.cs" Line="36" Column="14" />
+      <File FileName="courseProject/Views/UserTherapies/Index.cshtml" Line="28" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="courseProject" expanded="True">
-            <Node name="courseProject" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="Survey.cs" selected="True" />
-              </Node>
-              <Node name="Utilities" expanded="True" />
+          <Node name="courseProject" expanded="True" selected="True">
+            <Node name="Tests" expanded="True">
+              <Node name="UnitTest01" expanded="True" />
             </Node>
+            <Node name="courseProject" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>UnitTests/UnitTests.csproj</String>
+  </DisabledProjects>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.courseProject PreferredExecutionTarget="/Applications/Safari.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

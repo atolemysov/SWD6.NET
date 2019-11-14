@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "courseProject", "courseProject\courseProject.csproj", "{ADA20055-B120-4213-8D0E-837E7E93508A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{74ED8F58-FC9F-4711-BF8B-12CEF2739F7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest01", "UnitTest01\UnitTest01.csproj", "{ACCC68AB-24FC-4403-B205-32316576212B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +17,12 @@ Global
 		{ADA20055-B120-4213-8D0E-837E7E93508A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADA20055-B120-4213-8D0E-837E7E93508A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADA20055-B120-4213-8D0E-837E7E93508A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACCC68AB-24FC-4403-B205-32316576212B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACCC68AB-24FC-4403-B205-32316576212B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACCC68AB-24FC-4403-B205-32316576212B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACCC68AB-24FC-4403-B205-32316576212B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ACCC68AB-24FC-4403-B205-32316576212B} = {74ED8F58-FC9F-4711-BF8B-12CEF2739F7A}
 	EndGlobalSection
 EndGlobal

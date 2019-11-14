@@ -8,8 +8,8 @@ using courseProject.Data;
 namespace courseProject.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20191108192010_smth")]
-    partial class smth
+    [Migration("20191113203420_komek3")]
+    partial class komek3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,8 @@ namespace courseProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Role_Name");
+                    b.Property<string>("Role_Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -47,7 +48,8 @@ namespace courseProject.Migrations
 
                     b.Property<int>("Min");
 
-                    b.Property<string>("Question");
+                    b.Property<string>("Question")
+                        .IsRequired();
 
                     b.Property<int>("TherapyId");
 
@@ -63,7 +65,8 @@ namespace courseProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Therapy_Name");
+                    b.Property<string>("Therapy_Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -75,11 +78,16 @@ namespace courseProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Full_Name");
+                    b.Property<string>("Full_Name")
+                        .IsRequired()
+                        .HasMaxLength(99);
 
-                    b.Property<string>("Login");
+                    b.Property<string>("Login")
+                        .IsRequired();
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(99);
 
                     b.Property<int>("RoleId");
 
@@ -128,11 +136,14 @@ namespace courseProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Desc");
+                    b.Property<string>("Desc")
+                        .IsRequired()
+                        .HasMaxLength(199);
 
                     b.Property<int>("TherapyId");
 
-                    b.Property<string>("Url_Video");
+                    b.Property<string>("Url_Video")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

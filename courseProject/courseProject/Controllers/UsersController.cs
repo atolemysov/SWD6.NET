@@ -7,23 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
+using courseProject.Services;
 
 namespace courseProject.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly MyContext _context;
+        private readonly UsersService _usersService;
 
-        public UsersController(MyContext context)
+        public UsersController(UsersService usersService)
         {
-            _context = context;
+            _usersService = usersService;
         }
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var myContext = _context.Users.Include(u => u.User_Role);
-            return View(await myContext.ToListAsync());
+            var users =await _usersService.GetUser();
+            return View(users);
         }
 
         // GET: Users/Details/5
@@ -34,9 +35,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .Include(u => u.User_Role)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _usersService.DetailsUsers(id);
             if (user == null)
             {
                 return NotFound();
@@ -48,7 +47,7 @@ namespace courseProject.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id");
+            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id");
             return View();
         }
         
@@ -67,14 +66,14 @@ namespace courseProject.Controllers
             //    return Json($"Email {user.Login} is already in use.");
             //}
 
-            
+
             if (ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
+
+                await _usersService.AddAndSave(user);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id", user.RoleId);
+            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id", user.RoleId);
             return View(user);
         }
 
@@ -86,12 +85,12 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users.FindAsync(id);
+            var user = await _usersService.DetailsUsers(id);
             if (user == null)
             {
                 return NotFound();
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id", user.RoleId);
+            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id", user.RoleId);
             return View(user);
         }
 
@@ -111,8 +110,8 @@ namespace courseProject.Controllers
             {
                 try
                 {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
+
+                    await _usersService.Update(user);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -127,7 +126,7 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id", user.RoleId);
+            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id", user.RoleId);
             return View(user);
         }
 
@@ -139,9 +138,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .Include(u => u.User_Role)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _usersService.DetailsUsers(id);
             if (user == null)
             {
                 return NotFound();
@@ -155,15 +152,14 @@ namespace courseProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            var user = await _usersService.DetailsUsers(id);
+            await _usersService.Delete(user);
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _usersService.UserExis(id);
         }
         
     }

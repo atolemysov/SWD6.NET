@@ -15,7 +15,8 @@ namespace courseProject.Models
         public int Min { get; set; }
         public string Desc1 { get; set; }
 
-        //[ValidLengthClass(v: "10", ErrorMessage = "Max value must be equal to 10!!!")] -> Custom attribute validation
+        
+        
         public int Max { get; set; }
 
         public string Desc2 { get; set; }
@@ -26,13 +27,12 @@ namespace courseProject.Models
 
         public List<User_Answers> User_Answers { get; set; }
 
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (Max > 10 || Max < 1)
             {
-                yield return new ValidationResult(
-                    $"Max value must be equal to 10!!! {Max}.",
-                    new[] { "ReleaseDate" });
+                yield return new ValidationResult("Max value must be equal to 10!!! {Max}.");
             }
         }
     }

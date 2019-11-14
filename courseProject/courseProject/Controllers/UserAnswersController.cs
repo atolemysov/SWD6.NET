@@ -27,17 +27,14 @@ namespace courseProject.Controllers
         }
 
         // GET: UserAnswers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id1, int? id2)
         {
-            if (id == null)
+            if (id1 == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var user_Answers = await _context.User_Answers
-                .Include(u => u.Survey)
-                .Include(u => u.User)
-                .FirstOrDefaultAsync(m => m.UserId == id);
+            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
             if (user_Answers == null)
             {
                 return NotFound();
@@ -45,12 +42,11 @@ namespace courseProject.Controllers
 
             return View(user_Answers);
         }
-
         // GET: UserAnswers/Create
         public IActionResult Create()
         {
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name");
             return View();
         }
 
@@ -67,26 +63,26 @@ namespace courseProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Id", user_Answers.SurveyId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", user_Answers.UserId);
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
             return View(user_Answers);
         }
 
         // GET: UserAnswers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id1, int? id2)
         {
-            if (id == null)
+            if (id1 == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var user_Answers = await _context.User_Answers.FindAsync(id);
+            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
             if (user_Answers == null)
             {
                 return NotFound();
             }
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Id", user_Answers.SurveyId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", user_Answers.UserId);
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
             return View(user_Answers);
         }
 
@@ -97,48 +93,29 @@ namespace courseProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UserId,SurveyId,Answer")] User_Answers user_Answers)
         {
-            if (id != user_Answers.UserId)
-            {
-                return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(user_Answers);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!User_AnswersExists(user_Answers.UserId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                _context.Update(user_Answers);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Id", user_Answers.SurveyId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", user_Answers.UserId);
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
             return View(user_Answers);
         }
 
         // GET: UserAnswers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id1, int? id2)
         {
-            if (id == null)
+            if (id1 == null || id2 == null)
             {
                 return NotFound();
             }
 
-            var user_Answers = await _context.User_Answers
-                .Include(u => u.Survey)
-                .Include(u => u.User)
-                .FirstOrDefaultAsync(m => m.UserId == id);
+            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
             if (user_Answers == null)
             {
                 return NotFound();
@@ -146,13 +123,12 @@ namespace courseProject.Controllers
 
             return View(user_Answers);
         }
-
         // POST: UserAnswers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id1, int id2)
         {
-            var user_Answers = await _context.User_Answers.FindAsync(id);
+            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
             _context.User_Answers.Remove(user_Answers);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

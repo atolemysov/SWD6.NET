@@ -7,22 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
+using courseProject.Services;
 
 namespace courseProject.Controllers
 {
     public class RolesController : Controller
     {
-        private readonly MyContext _context;
+        private readonly RolesService _rolesService;
 
-        public RolesController(MyContext context)
+        public RolesController(RolesService rolesService)
         {
-            _context = context;
+            _rolesService = rolesService;
         }
 
         // GET: Roles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Roles.ToListAsync());
+            var roles = await _rolesService.GetRoles();
+            return View(roles);
         }
 
         // GET: Roles/Details/5
@@ -33,8 +35,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var role = await _rolesService.DetailsRoles(id);
             if (role == null)
             {
                 return NotFound();
@@ -58,8 +59,7 @@ namespace courseProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(role);
-                await _context.SaveChangesAsync();
+                await _rolesService.AddAndSave(role);
                 return RedirectToAction(nameof(Index));
             }
             return View(role);
@@ -73,7 +73,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var role = await _context.Roles.FindAsync(id);
+            var role = await _rolesService.DetailsRoles(id);
             if (role == null)
             {
                 return NotFound();
@@ -97,8 +97,7 @@ namespace courseProject.Controllers
             {
                 try
                 {
-                    _context.Update(role);
-                    await _context.SaveChangesAsync();
+                    await _rolesService.Update(role);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +123,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var role = await _rolesService.DetailsRoles(id);
             if (role == null)
             {
                 return NotFound();
@@ -139,15 +137,14 @@ namespace courseProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
-            _context.Roles.Remove(role);
-            await _context.SaveChangesAsync();
+            var role = await _rolesService.DetailsRoles(id);
+            await _rolesService.Delete(role);
             return RedirectToAction(nameof(Index));
         }
 
         private bool RoleExists(int id)
         {
-            return _context.Roles.Any(e => e.Id == id);
+            return _rolesService.RolesExis(id);
         }
     }
 }

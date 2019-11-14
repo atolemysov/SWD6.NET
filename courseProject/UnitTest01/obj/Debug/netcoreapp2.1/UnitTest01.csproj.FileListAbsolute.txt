@@ -1,0 +1,38 @@
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.Views.dll
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.Views.pdb
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/Properties/launchSettings.json
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.deps.json
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.runtimeconfig.json
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.runtimeconfig.dev.json
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.dll
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.pdb
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.dll
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.pdb
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.csprojAssemblyReference.cache
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.AssemblyInfoInputs.cache
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.AssemblyInfo.cs
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.csproj.CopyComplete
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.dll
+/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.Views.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.Views.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/Properties/launchSettings.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.deps.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.runtimeconfig.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.runtimeconfig.dev.json
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/UnitTest01.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/bin/Debug/netcoreapp2.1/courseProject.pdb
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.csprojAssemblyReference.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.AssemblyInfoInputs.cache
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.AssemblyInfo.cs
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.csproj.CopyComplete
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.dll
+/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/obj/Debug/netcoreapp2.1/UnitTest01.pdb

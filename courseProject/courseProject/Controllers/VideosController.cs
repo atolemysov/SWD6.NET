@@ -7,23 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
+using courseProject.Services;
 
 namespace courseProject.Controllers
 {
     public class VideosController : Controller
     {
-        private readonly MyContext _context;
+        private readonly VideosService _videosService;
 
-        public VideosController(MyContext context)
+        public VideosController(VideosService videosService)
         {
-            _context = context;
+            _videosService = videosService;
         }
 
         // GET: Videos
         public async Task<IActionResult> Index()
         {
-            var myContext = _context.Videos.Include(v => v.Video_Therapy);
-            return View(await myContext.ToListAsync());
+            var videos = await _videosService.GetVideo();
+            return View(videos);
         }
 
         // GET: Videos/Details/5
@@ -34,9 +35,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var video = await _context.Videos
-                .Include(v => v.Video_Therapy)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var video = await _videosService.DetailsVideos(id);
             if (video == null)
             {
                 return NotFound();
@@ -48,7 +47,7 @@ namespace courseProject.Controllers
         // GET: Videos/Create
         public IActionResult Create()
         {
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id");
+            ViewData["TherapyId"] = new SelectList(_videosService.getTherapies(), "Id", "Id");
             return View();
         }
 
@@ -61,11 +60,11 @@ namespace courseProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(video);
-                await _context.SaveChangesAsync();
+
+                await _videosService.AddAndSave(video);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", video.TherapyId);
+            ViewData["TherapyId"] = new SelectList(_videosService.getTherapies(), "Id", "Id", video.TherapyId);
             return View(video);
         }
 
@@ -77,12 +76,12 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var video = await _context.Videos.FindAsync(id);
+            var video = await _videosService.DetailsVideos(id);
             if (video == null)
             {
                 return NotFound();
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", video.TherapyId);
+            ViewData["TherapyId"] = new SelectList(_videosService.getTherapies(), "Id", "Id", video.TherapyId);
             return View(video);
         }
 
@@ -102,8 +101,8 @@ namespace courseProject.Controllers
             {
                 try
                 {
-                    _context.Update(video);
-                    await _context.SaveChangesAsync();
+                    
+                    await _videosService.Update(video);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -118,7 +117,7 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", video.TherapyId);
+            ViewData["TherapyId"] = new SelectList(_videosService.getTherapies(), "Id", "Id", video.TherapyId);
             return View(video);
         }
 
@@ -130,9 +129,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var video = await _context.Videos
-                .Include(v => v.Video_Therapy)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var video = await _videosService.DetailsVideos(id);
             if (video == null)
             {
                 return NotFound();
@@ -146,15 +143,14 @@ namespace courseProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var video = await _context.Videos.FindAsync(id);
-            _context.Videos.Remove(video);
-            await _context.SaveChangesAsync();
+            var video = await _videosService.DetailsVideos(id);
+            await _videosService.Delete(video);
             return RedirectToAction(nameof(Index));
         }
 
         private bool VideoExists(int id)
         {
-            return _context.Videos.Any(e => e.Id == id);
+            return _videosService.VideoExis(id);
         }
     }
 }

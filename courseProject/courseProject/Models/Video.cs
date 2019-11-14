@@ -18,4 +18,6 @@ namespace courseProject.Models
         [ForeignKey("TherapyId")]
         public Therapy Video_Therapy { get; set; }
     }
+     
 }
+

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using courseProject.Abstractions;
 using courseProject.Data;
+using courseProject.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +28,21 @@ namespace courseProject
                 options.UseSqlite("Filename=icap.db");
             });
             services.AddMvc();
+
+            services.AddScoped<RolesService>();
+            services.AddScoped<IRolesRepo, RolesRepo>();
+
+            services.AddScoped<SurveysService>();
+            services.AddScoped<ISurveysRepo, SurveysRepo>();
+
+            services.AddScoped<TherapiesService>();
+            services.AddScoped<ITherapiesRepo, TherapiesRepo>();
+
+            services.AddScoped<UsersService>();
+            services.AddScoped<IUsersRepo, UsersRepo>();
+
+            services.AddScoped<VideosService>();
+            services.AddScoped<IVideosRepo, VideosRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

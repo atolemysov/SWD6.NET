@@ -1,22 +1,22 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace courseProject.Utilities
 {
     //Custom attribute validation
     public class ValidLengthClass : ValidationAttribute
     {
-        
-        private readonly string v;
-        public ValidLengthClass(string v, string ErrorMessage)
-        {
-            this.v = v;
-            this.ErrorMessage = ErrorMessage;
-        }
 
-        public override bool IsValid(object value)
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            return value.Equals(v);
+            if (value != null)
+            {
+                String v = value.ToString();
+                if ((v.Any(char.IsLetter) && v.Any(char.IsDigit))||(v.Any(char.IsLetter)))
+                    return ValidationResult.Success;
+            }
+            return new ValidationResult("Login must be only with characters!");
         }
     }
 }

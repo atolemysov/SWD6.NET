@@ -22,13 +22,13 @@
             @Html.DisplayNameFor(model => model.User)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.User.Id)
+            @Html.DisplayFor(model => model.User.Full_Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Survey)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Survey.Id)
+            @Html.DisplayFor(model => model.Survey.Question)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Answer)
@@ -39,7 +39,7 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id1 = Model.UserId, id2 = Model.SurveyId }) |
     <a asp-action="Index">Back to List</a>
 </div>
 </body>

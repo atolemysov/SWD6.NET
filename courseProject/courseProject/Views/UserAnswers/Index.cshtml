@@ -2,7 +2,6 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
 }
 
 <!DOCTYPE html>
@@ -36,18 +35,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.User.Full_Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Survey.Id)
+                @Html.DisplayFor(modelItem => item.Survey.Question)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Answer)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id1 = item.UserId, id2 = item.SurveyId  }) |
+                @Html.ActionLink("Details", "Details", new { id1 = item.UserId, id2 = item.SurveyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id1 = item.UserId, id2 = item.SurveyId })
             </td>
         </tr>
 }

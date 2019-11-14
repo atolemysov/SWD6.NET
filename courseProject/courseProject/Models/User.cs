@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using courseProject.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace courseProject.Models
@@ -10,8 +11,10 @@ namespace courseProject.Models
     {
         [Key]
         public int Id { get; set; }
-        //[Remote(action: "Create", controller: "UserController")] -> Remote validation validation
+        
         [Required]
+        [ValidLengthClass]
+        [Remote(action: "Create", controller: "UserController")]
         public string Login { get; set; }
         [Required]
         [StringLength(99)]

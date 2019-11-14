@@ -7,23 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
+using courseProject.Services;
 
 namespace courseProject.Controllers
 {
     public class SurveysController : Controller
     {
-        private readonly MyContext _context;
+        private readonly SurveysService _surveysService;
 
-        public SurveysController(MyContext context)
+        public SurveysController(SurveysService surveysService)
         {
-            _context = context;
+            _surveysService = surveysService;
+            
         }
 
         // GET: Surveys
         public async Task<IActionResult> Index()
         {
-            var myContext = _context.Surveys.Include(s => s.Survey_Therapy);
-            return View(await myContext.ToListAsync());
+            var surveys = await _surveysService.GetSurvey();
+            return View(surveys);
         }
 
         // GET: Surveys/Details/5
@@ -34,9 +36,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var survey = await _context.Surveys
-                .Include(s => s.Survey_Therapy)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var survey = await _surveysService.DetailsSurveys(id);
             if (survey == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace courseProject.Controllers
         // GET: Surveys/Create
         public IActionResult Create()
         {
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id");
+            ViewData["TherapyId"] = new SelectList(_surveysService.getTherapies(), "Id", "Id");
             return View();
         }
 
@@ -61,11 +61,11 @@ namespace courseProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(survey);
-                await _context.SaveChangesAsync();
+                
+                await _surveysService.AddAndSave(survey);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", survey.TherapyId);
+            ViewData["TherapyId"] = new SelectList(_surveysService.getTherapies(), "Id", "Id", survey.TherapyId);
             return View(survey);
         }
 
@@ -77,12 +77,12 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var survey = await _context.Surveys.FindAsync(id);
+            var survey = await _surveysService.DetailsSurveys(id);
             if (survey == null)
             {
                 return NotFound();
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", survey.TherapyId);
+            ViewData["TherapyId"] = new SelectList(_surveysService.getTherapies(), "Id", "Id", survey.TherapyId);
             return View(survey);
         }
 
@@ -102,8 +102,8 @@ namespace courseProject.Controllers
             {
                 try
                 {
-                    _context.Update(survey);
-                    await _context.SaveChangesAsync();
+                    
+                    await _surveysService.Update(survey);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -118,7 +118,7 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", survey.TherapyId);
+            ViewData["TherapyId"] = new SelectList(_surveysService.getTherapies(), "Id", "Id", survey.TherapyId);
             return View(survey);
         }
 
@@ -130,9 +130,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var survey = await _context.Surveys
-                .Include(s => s.Survey_Therapy)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var survey = await _surveysService.DetailsSurveys(id);
             if (survey == null)
             {
                 return NotFound();
@@ -146,15 +144,14 @@ namespace courseProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var survey = await _context.Surveys.FindAsync(id);
-            _context.Surveys.Remove(survey);
-            await _context.SaveChangesAsync();
+            var survey = await _surveysService.DetailsSurveys(id);
+            await _surveysService.Delete(survey);
             return RedirectToAction(nameof(Index));
         }
 
         private bool SurveyExists(int id)
         {
-            return _context.Surveys.Any(e => e.Id == id);
+            return _surveysService.SurveyExis(id);
         }
     }
 }

@@ -48,8 +48,8 @@ namespace courseProject.Data
 
             modelBuilder.Entity<User_Answers>()
                 .HasOne(pt => pt.Survey)
-                .WithMany(t => t.User_Answers)
-                .HasForeignKey(pt => pt.SurveyId);
+                .WithMany(t => t.User_Answers);
+                
             //Many to many User_Answers between User and Survey END -––––––––––––––-––––––––––––––-––––––––––––––-––––––––––––––
 
 

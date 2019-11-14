@@ -2,7 +2,7 @@
 
 namespace courseProject.Migrations
 {
-    public partial class smth : Migration
+    public partial class komek3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace courseProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Role_Name = table.Column<string>(nullable: true)
+                    Role_Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +25,7 @@ namespace courseProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Therapy_Name = table.Column<string>(nullable: true)
+                    Therapy_Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,9 +38,9 @@ namespace courseProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Login = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Full_Name = table.Column<string>(nullable: true),
+                    Login = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(maxLength: 99, nullable: false),
+                    Full_Name = table.Column<string>(maxLength: 99, nullable: false),
                     RoleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -60,7 +60,7 @@ namespace courseProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Question = table.Column<string>(nullable: true),
+                    Question = table.Column<string>(nullable: false),
                     Min = table.Column<int>(nullable: false),
                     Desc1 = table.Column<string>(nullable: true),
                     Max = table.Column<int>(nullable: false),
@@ -84,8 +84,8 @@ namespace courseProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Desc = table.Column<string>(nullable: true),
-                    Url_Video = table.Column<string>(nullable: true),
+                    Desc = table.Column<string>(maxLength: 199, nullable: false),
+                    Url_Video = table.Column<string>(nullable: false),
                     TherapyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

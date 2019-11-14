@@ -7,22 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
+using courseProject.Services;
 
 namespace courseProject.Controllers
 {
     public class TherapiesController : Controller
     {
-        private readonly MyContext _context;
+        private readonly TherapiesService _therapiesService;
 
-        public TherapiesController(MyContext context)
+        public TherapiesController(TherapiesService therapiesService)
         {
-            _context = context;
+            _therapiesService = therapiesService;
         }
 
         // GET: Therapies
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Therapies.ToListAsync());
+            var therapies = await _therapiesService.GetTherapy();
+            return View(therapies);
         }
 
         // GET: Therapies/Details/5
@@ -33,8 +35,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var therapy = await _context.Therapies
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var therapy = await _therapiesService.DetailsTherapies(id);
             if (therapy == null)
             {
                 return NotFound();
@@ -58,8 +59,8 @@ namespace courseProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(therapy);
-                await _context.SaveChangesAsync();
+                
+                await _therapiesService.AddAndSave(therapy);
                 return RedirectToAction(nameof(Index));
             }
             return View(therapy);
@@ -73,7 +74,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var therapy = await _context.Therapies.FindAsync(id);
+            var therapy = await _therapiesService.DetailsTherapies(id);
             if (therapy == null)
             {
                 return NotFound();
@@ -97,8 +98,8 @@ namespace courseProject.Controllers
             {
                 try
                 {
-                    _context.Update(therapy);
-                    await _context.SaveChangesAsync();
+
+                    await _therapiesService.Update(therapy);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +125,7 @@ namespace courseProject.Controllers
                 return NotFound();
             }
 
-            var therapy = await _context.Therapies
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var therapy = await _therapiesService.DetailsTherapies(id);
             if (therapy == null)
             {
                 return NotFound();
@@ -139,15 +139,14 @@ namespace courseProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var therapy = await _context.Therapies.FindAsync(id);
-            _context.Therapies.Remove(therapy);
-            await _context.SaveChangesAsync();
+            var therapy = await _therapiesService.DetailsTherapies(id);
+            await _therapiesService.Delete(therapy);
             return RedirectToAction(nameof(Index));
         }
 
         private bool TherapyExists(int id)
         {
-            return _context.Therapies.Any(e => e.Id == id);
+            return _therapiesService.TherapyExis(id);
         }
     }
 }

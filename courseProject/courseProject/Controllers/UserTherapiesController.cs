@@ -27,30 +27,28 @@ namespace courseProject.Controllers
         }
 
         // GET: UserTherapies/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? userId, int? therapyId)
         {
-            if (id == null)
+            if (userId == null || therapyId == null)
             {
                 return NotFound();
             }
 
-            var user_Therapy = await _context.User_Therapy
-                .Include(u => u.Therapy)
-                .Include(u => u.User)
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (user_Therapy == null)
+            var userTherapy = await _context.User_Therapy.FindAsync(userId, therapyId);
+            if (userTherapy == null)
             {
                 return NotFound();
             }
 
-            return View(user_Therapy);
+            return View(userTherapy);
         }
 
+        
         // GET: UserTherapies/Create
         public IActionResult Create()
         {
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name");
             return View();
         }
 
@@ -67,26 +65,26 @@ namespace courseProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", user_Therapy.TherapyId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", user_Therapy.UserId);
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Therapy.UserId);
             return View(user_Therapy);
         }
 
         // GET: UserTherapies/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? userId, int? therapyId)
         {
-            if (id == null)
+            if (userId == null || therapyId == null)
             {
                 return NotFound();
             }
 
-            var user_Therapy = await _context.User_Therapy.FindAsync(id);
+            var user_Therapy = await _context.User_Therapy.FindAsync(userId, therapyId);
             if (user_Therapy == null)
             {
                 return NotFound();
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", user_Therapy.TherapyId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", user_Therapy.UserId);
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Therapy.UserId);
             return View(user_Therapy);
         }
 
@@ -122,10 +120,11 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Id", user_Therapy.TherapyId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", user_Therapy.UserId);
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Therapy.UserId);
             return View(user_Therapy);
         }
+
 
         // GET: UserTherapies/Delete/5
         public async Task<IActionResult> Delete(int? id)
