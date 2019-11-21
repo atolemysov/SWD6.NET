@@ -13,8 +13,8 @@ namespace courseProject.Abstractions
         void Delete(Survey role);
         Task Save();
         Task<List<Survey>> GetAll();
-        Task<Survey> GetDetail(int? id);
-        bool Exist(int id);
+        Task<Survey> GetDetail(string id);
+        bool Exist(string id);
         DbSet<Therapy> GetTherapies();
     }
 }

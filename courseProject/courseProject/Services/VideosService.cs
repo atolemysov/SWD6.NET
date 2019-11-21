@@ -23,13 +23,13 @@ namespace courseProject.Services
         }
 
         // GET: Roles/Details/5 and For Edit Get Role
-        public async Task<Video> DetailsVideos(int? id)
+        public async Task<Video> DetailsVideos(string id)
         {
             return await _videoRepo.GetDetail(id);
             //return await _context.Roles.FirstOrDefaultAsync(m => m.Id == id);
         }
         // For last method
-        public bool VideoExis(int id)
+        public bool VideoExis(string id)
         {
             return _videoRepo.Exist(id);
             //return _context.Roles.Any(m => m.Id == id);

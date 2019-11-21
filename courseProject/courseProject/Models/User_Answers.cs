@@ -9,11 +9,11 @@ namespace courseProject.Models
         //[Key]
         //public int Id { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
 
-        public int SurveyId { get; set; }
+        public string SurveyId { get; set; }
         [ForeignKey("SurveyId")]
         public Survey Survey { get; set; }
 

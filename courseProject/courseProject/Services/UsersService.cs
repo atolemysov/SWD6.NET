@@ -23,13 +23,13 @@ namespace courseProject.Services
         }
 
         // GET: Roles/Details/5 and For Edit Get Role
-        public async Task<User> DetailsUsers(int? id)
+        public async Task<User> DetailsUsers(string id)
         {
             return await _userRepo.GetDetail(id);
             //return await _context.Roles.FirstOrDefaultAsync(m => m.Id == id);
         }
         // For last method
-        public bool UserExis(int id)
+        public bool UserExis(string id)
         {
             return _userRepo.Exist(id);
             //return _context.Roles.Any(m => m.Id == id);
@@ -61,9 +61,6 @@ namespace courseProject.Services
             //await _context.SaveChangesAsync();
         }
 
-        public DbSet<Role> getRoles()
-        {
-            return _userRepo.GetRoles();
-        }
+       
     }
 }

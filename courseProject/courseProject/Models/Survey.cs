@@ -9,7 +9,7 @@ namespace courseProject.Models
     public class Survey : IValidatableObject
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required]
         public string Question { get; set; }
         public int Min { get; set; }
@@ -21,7 +21,7 @@ namespace courseProject.Models
 
         public string Desc2 { get; set; }
 
-        public int TherapyId { get; set; }
+        public string TherapyId { get; set; }
         [ForeignKey("TherapyId")]
         public Therapy Survey_Therapy { get; set; }
 

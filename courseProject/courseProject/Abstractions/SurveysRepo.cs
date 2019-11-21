@@ -30,7 +30,7 @@ namespace courseProject.Abstractions
             _context.Remove(survey);
         }
 
-        public bool Exist(int id)
+        public bool Exist(string id)
         {
             return _context.Surveys.Any(m => m.Id == id);
         }
@@ -40,7 +40,7 @@ namespace courseProject.Abstractions
             return _context.Surveys.ToListAsync();
         }
 
-        public Task<Survey> GetDetail(int? id)
+        public Task<Survey> GetDetail(string id)
         {
             return _context.Surveys.FirstOrDefaultAsync(m => m.Id == id);
         }

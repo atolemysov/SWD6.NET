@@ -1,41 +1,23 @@
 @model courseProject.Models.Therapy
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-</head>
-<body>
-
-<h4>Therapy</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<main class="pt-4 max-lg-5">
+    <div class="container-fluid">
+        <div id="head" class="mb-4">
+            <p>Изменение нового модуля</p>
+        </div>
+        <form asp-action="Edit" id="add">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Therapy_Name" class="control-label"></label>
-                <input asp-for="Therapy_Name" class="form-control" />
+            <label asp-for="Therapy_Name">Имя модуля</label>
+            <div class="input-group md-form form-sm mb-4 w-50">
+                <input asp-for="Therapy_Name" type="text" id="f1" class="form-control form-control-sm " required>
                 <span asp-validation-for="Therapy_Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+            <button class="btn btn-primary text-uppercase font-weight-bold mb-5 mr-3 pt-2 pb-2" type="submit" value="Save" ><i class="fas fa-change mr-2"></i>Сохранить</button>
+            <a asp-action="Index" class="btn btn-primary text-uppercase font-weight-bold mb-5 pt-2 pb-2">Назад</a>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-</body>
-</html>
+</main>

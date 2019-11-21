@@ -1,6 +1,12 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@model ViewModels.LoginViewModel
 
+@{
+    ViewBag.Title = "User Login";
+}
+
+<!DOCTYPE html>
+
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +27,6 @@
     <!-- Style CSS END-->
     <title>Авторизация</title>
 </head>
-
 <body>
     <div class="container">
         <div id="index">
@@ -33,28 +38,31 @@
                 <div class="text-center mb-4">
                     <h2>Авторизация</h2>
                 </div>
-                <form actions="" method="POST" class="">
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-danger text-center"></div>
                     <div class="">
-                        <center> <label for="form3">Логин</label></center>
+                        <center> <label asp-for="Email">Логин</label></center>
                         <div class="input-group md-form form-sm mb-4 mx-auto form22">
-                            <input type="text" id="form2" class="form-control form-control-sm d-block mx-auto" required>
+                            <input asp-for="Email" type="text" class="form-control form-control-sm d-block mx-auto" required>
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-sign-in-alt"></i></span>
                             </div>
+                            <span asp-validation-for="Email" class="text-danger text-center mb-5"></span>
                         </div>
 
-                        <center><label for="form2" class="">Пароль</label></center>
+                        <center><label asp-for="Password" >Пароль</label></center>
                         <div class="input-group md-form form-sm mb-4 mx-auto form22">
-                            <input type="password" id="form2" class="form-control form-control-sm d-block mx-auto"
+                            <input asp-for="Password" type="password" class="form-control form-control-sm d-block mx-auto"
                                 required>
                             <div class="input-group-append">
                                 <span class="input-group-text"><a href="#"><i class="far fa-eye"></i></a></span>
                             </div>
+                            <span asp-validation-for="Password" class="text-danger text-center"></span>
                         </div>
                     </div>
 
                     <div class="text-center">
-                        <button class="btn btn-primary text-uppercase font-weight-bold">Вход</button>
+                        <button type="submit" class="btn btn-primary text-uppercase font-weight-bold">Вход</button>
                     </div>
                 </form>
             </div>
@@ -72,5 +80,4 @@
         crossorigin="anonymous"></script>
     <!-- Bootstrap 4 JS END -->
 </body>
-
 </html>

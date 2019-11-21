@@ -23,13 +23,13 @@ namespace courseProject.Services
         }
 
         // GET: Roles/Details/5 and For Edit Get Role
-        public async Task<Survey> DetailsSurveys(int? id)
+        public async Task<Survey> DetailsSurveys(string id)
         {
             return await _surveyRepo.GetDetail(id);
             //return await _context.Roles.FirstOrDefaultAsync(m => m.Id == id);
         }
         // For last method
-        public bool SurveyExis(int id)
+        public bool SurveyExis(string id)
         {
             return _surveyRepo.Exist(id);
             //return _context.Roles.Any(m => m.Id == id);

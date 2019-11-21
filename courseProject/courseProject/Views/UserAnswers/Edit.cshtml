@@ -24,11 +24,13 @@
             <input type="hidden" asp-for="SurveyId" />-->
             <div class="form-group">
                 <label id="UserId" name="UserId" class="control-label">Course Id</label>
-                <input id="UserId" name ="UserId"class="form-control" value="@Model.UserId" disabled/>
+                <input class="form-control" value="@Model.UserId" disabled/>
+                <input id="UserId" name ="UserId" class="form-control" value="@Model.UserId" type="hidden"/>
             </div>
             <div class="form-group">
                 <label id="SurveyId" name="SurveyId" class="control-label">Member id</label>
-                <input id="SurveyId" name="SurveyId" class="form-control" value="@Model.SurveyId" disabled/>
+                <input class="form-control" value="@Model.SurveyId" disabled/>
+                <input id="SurveyId" name="SurveyId" class="form-control" value="@Model.SurveyId" type="hidden"/>
             </div>
             <div class="form-group">
                 <label asp-for="Answer" class="control-label"></label>

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace courseProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserTherapiesController : Controller
     {
         private readonly MyContext _context;
@@ -27,7 +29,7 @@ namespace courseProject.Controllers
         }
 
         // GET: UserTherapies/Details/5
-        public async Task<IActionResult> Details(int? userId, int? therapyId)
+        public async Task<IActionResult> Details(string userId, string therapyId)
         {
             if (userId == null || therapyId == null)
             {
@@ -47,8 +49,9 @@ namespace courseProject.Controllers
         // GET: UserTherapies/Create
         public IActionResult Create()
         {
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name");
+            
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name");
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name");
             return View();
         }
 
@@ -65,13 +68,14 @@ namespace courseProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
+            
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Therapy.UserId);
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
             return View(user_Therapy);
         }
 
         // GET: UserTherapies/Edit/5
-        public async Task<IActionResult> Edit(int? userId, int? therapyId)
+        public async Task<IActionResult> Edit(string userId, string therapyId)
         {
             if (userId == null || therapyId == null)
             {
@@ -83,8 +87,9 @@ namespace courseProject.Controllers
             {
                 return NotFound();
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
+            
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Therapy.UserId);
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
             return View(user_Therapy);
         }
 
@@ -93,7 +98,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,TherapyId")] User_Therapy user_Therapy)
+        public async Task<IActionResult> Edit(string id, [Bind("UserId,TherapyId")] User_Therapy user_Therapy)
         {
             if (id != user_Therapy.UserId)
             {
@@ -120,24 +125,22 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
+            
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Therapy.UserId);
+            ViewData["TherapyId"] = new SelectList(_context.Therapies, "Id", "Therapy_Name", user_Therapy.TherapyId);
             return View(user_Therapy);
         }
 
 
         // GET: UserTherapies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string userId, string therapyId)
         {
-            if (id == null)
+            if (userId == null|| therapyId == null)
             {
                 return NotFound();
             }
 
-            var user_Therapy = await _context.User_Therapy
-                .Include(u => u.Therapy)
-                .Include(u => u.User)
-                .FirstOrDefaultAsync(m => m.UserId == id);
+            var user_Therapy = await _context.User_Therapy.FindAsync(userId, therapyId);
             if (user_Therapy == null)
             {
                 return NotFound();
@@ -149,15 +152,15 @@ namespace courseProject.Controllers
         // POST: UserTherapies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string userId, string therapyId)
         {
-            var user_Therapy = await _context.User_Therapy.FindAsync(id);
+            var user_Therapy = await _context.User_Therapy.FindAsync(userId, therapyId);
             _context.User_Therapy.Remove(user_Therapy);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool User_TherapyExists(int id)
+        private bool User_TherapyExists(string id)
         {
             return _context.User_Therapy.Any(e => e.UserId == id);
         }

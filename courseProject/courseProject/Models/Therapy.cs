@@ -7,7 +7,7 @@ namespace courseProject.Models
     public class Therapy
     {
         [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [Required]
         public string Therapy_Name { get; set; }
 

@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Therapy.Therapy_Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { UserId = item.UserId, TherapyId = item.TherapyId }) |
+                @Html.ActionLink("Details", "Details", new { UserId = item.UserId, TherapyId = item.TherapyId }) |
+                @Html.ActionLink("Delete", "Delete", new { UserId = item.UserId, TherapyId = item.TherapyId })
             </td>
         </tr>
 }

@@ -22,13 +22,13 @@ namespace courseProject.Services
         }
 
         // GET: Roles/Details/5 and For Edit Get Role
-        public async Task<Therapy> DetailsTherapies(int? id)
+        public async Task<Therapy> DetailsTherapies(string id)
         {
             return await _therapyRepo.GetDetail(id);
             //return await _context.Roles.FirstOrDefaultAsync(m => m.Id == id);
         }
         // For last method
-        public bool TherapyExis(int id)
+        public bool TherapyExis(string id)
         {
             return _therapyRepo.Exist(id);
             //return _context.Roles.Any(m => m.Id == id);

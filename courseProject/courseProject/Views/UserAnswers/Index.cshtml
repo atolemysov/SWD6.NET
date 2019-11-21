@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.Answer)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id1 = item.UserId, id2 = item.SurveyId  }) |
-                @Html.ActionLink("Details", "Details", new { id1 = item.UserId, id2 = item.SurveyId }) |
-                @Html.ActionLink("Delete", "Delete", new { id1 = item.UserId, id2 = item.SurveyId })
+                @Html.ActionLink("Edit", "Edit", new { UserId = item.UserId, SurveyId = item.SurveyId  }) |
+                @Html.ActionLink("Details", "Details", new { UserId = item.UserId, SurveyId = item.SurveyId }) |
+                @Html.ActionLink("Delete", "Delete", new { UserId = item.UserId, SurveyId = item.SurveyId })
             </td>
         </tr>
 }

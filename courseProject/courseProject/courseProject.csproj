@@ -8,7 +8,6 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
-    <Folder Include="Views\Login\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Models\" />
@@ -16,6 +15,9 @@
     <Folder Include="Utilities\" />
     <Folder Include="Services\" />
     <Folder Include="Abstractions\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Administration\" />
   </ItemGroup>
 
   <ItemGroup>

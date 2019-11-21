@@ -8,27 +8,34 @@ using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
 using courseProject.Services;
+using Microsoft.AspNetCore.Authorization;
+using courseProject.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace courseProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly UsersService _usersService;
+        private readonly UserManager<User> userManager;
 
-        public UsersController(UsersService usersService)
+
+        public UsersController(UsersService usersService, UserManager<User> userManager)
         {
             _usersService = usersService;
+            this.userManager = userManager;
         }
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var users =await _usersService.GetUser();
+            var users = await _usersService.GetUser();
             return View(users);
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -47,7 +54,6 @@ namespace courseProject.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id");
             return View();
         }
         
@@ -58,7 +64,7 @@ namespace courseProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[AcceptVerbs("Get", "Post")] -> Remote validation
-        public async Task<IActionResult> Create([Bind("Id,Login,Password,Full_Name,RoleId")] User user)
+        public async Task<IActionResult> Create(RegisterViewModel model)
         {
             //Remote validation
             //if (!_context.Find(user.Login))
@@ -69,16 +75,29 @@ namespace courseProject.Controllers
 
             if (ModelState.IsValid)
             {
-
-                await _usersService.AddAndSave(user);
-                return RedirectToAction(nameof(Index));
+                var user = new User
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Full_Name = model.Full_Name,
+                };
+                var result = await userManager.CreateAsync(user, model.Password);
+                //await _usersService.AddAndSave(user);
+                //return RedirectToAction(nameof(Index));
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("index", "/Users");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
             }
-            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id", user.RoleId);
-            return View(user);
+            return View(model);
         }
 
         // GET: Users/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -90,7 +109,6 @@ namespace courseProject.Controllers
             {
                 return NotFound();
             }
-            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id", user.RoleId);
             return View(user);
         }
 
@@ -99,7 +117,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password,Full_Name,RoleId")] User user)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Email,Password,Full_Name,RoleId")] User user)
         {
             if (id != user.Id)
             {
@@ -110,7 +128,6 @@ namespace courseProject.Controllers
             {
                 try
                 {
-
                     await _usersService.Update(user);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -126,12 +143,11 @@ namespace courseProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_usersService.getRoles(), "Id", "Id", user.RoleId);
             return View(user);
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -150,14 +166,14 @@ namespace courseProject.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var user = await _usersService.DetailsUsers(id);
             await _usersService.Delete(user);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
             return _usersService.UserExis(id);
         }

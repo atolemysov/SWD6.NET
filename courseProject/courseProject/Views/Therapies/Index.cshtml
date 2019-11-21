@@ -1,45 +1,42 @@
 @model IEnumerable<courseProject.Models.Therapy>
-
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    
+    Layout = "~/Views/Shared/_SideBar.cshtml";
 }
 
-<!DOCTYPE html>
+    <main class="pt-4 max-lg-5">
+        <div class="container-fluid">
+            <!-- Head -->
+            <div id="head" class="mb-4">
+                <p>Управление контентом</p>
+                <div class="d-flex flex-wrap justify-content-between">
+                        <form action="" method="POST">
+                            <div class="d-flex flex-wrap" id="search">
+                                <i class="fas fa-search mr-2 align-self-center"></i>
+                                <input class="form-control form-control-sm w-75" type="search"
+                                    placeholder="Поиск модулей">
+                            </div>
+                        </form>
+                        <a  asp-action="Create" class="btn btn-primary text-uppercase pr-4 pt-2 pb-2"> <i
+                                class="fa fa-plus mr-2 ml-2"></i>Добавление нового модуля</a>
+                </div>
+                </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-</head>
-<body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Therapy_Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Therapy_Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
-</html>
+            <div class="row mt-5">
+                @foreach (var item in Model)
+                {
+                <div class="col-12 col-sm-5 rec">
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <p>@Html.DisplayFor(modelItem => item.Therapy_Name)</p>
+                        <div class="d-flex flex-wrap justify-content-between">
+                            <a asp-action="AddContent" asp-route-id="@item.Id" class="edit align-self-start mr-3"><i class="fa fa-plus"></i></a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="edit align-self-start mr-3"><i class="fas fa-pencil-alt"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="delete"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+        <!-- Main content  -->
+    </main>
+

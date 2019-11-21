@@ -11,7 +11,7 @@ namespace courseProject.Abstractions
         void Delete(User_Therapy role);
         Task Save();
         Task<List<User_Therapy>> GetAll();
-        Task<User_Therapy> GetDetail(int? id);
-        bool Exist(int id);
+        Task<User_Therapy> GetDetail(string id);
+        bool Exist(string id);
     }
 }

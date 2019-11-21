@@ -1,37 +1,26 @@
 @model courseProject.Models.Therapy
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_SideBar.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-</head>
-<body>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Therapy</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Therapy_Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Therapy_Name)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
-</body>
-</html>
+<main class="pt-4 max-lg-5">
+    <div class="container-fluid">
+        <div id="head" class="mb-4">
+            <p>Вы уверены, что хотите удалить это?</p>
+        </div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Therapy_Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Therapy_Name)
+                </dd>
+            </dl>
+        <form asp-action="Delete" id="add">
+            <input type="hidden" asp-for="Id" />  
+            <button class="btn btn-primary text-uppercase font-weight-bold mb-5 mr-3 pt-2 pb-2 deleteB" type="submit" value="Delete" ><i class="fas fa-minus mr-2"></i>Удалить</button>
+            <a asp-action="Index" class="btn btn-primary text-uppercase font-weight-bold mb-5 pt-2 pb-2">Назад</a>
+        </form>
+            
+    </div>
+</main>

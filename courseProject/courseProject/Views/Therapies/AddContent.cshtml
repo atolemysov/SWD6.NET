@@ -1,0 +1,110 @@
+﻿@model courseProject.Models.Therapy
+
+@{
+    Layout = "~/Views/Shared/_SideBar.cshtml";
+}
+
+<main class="pt-4 max-lg-5">
+        <div class="container-fluid">
+            <!-- Head -->
+            <div id="head" class="mb-4">
+                <p>@Html.DisplayFor(model => model.Therapy_Name)</p>
+            </div>
+            <label for="div33" class="text-uppercase font-weight-bold module">Выберите контент</label>
+            <div class="d-flex flex-wrap mb-3" id="div33">
+                <div class="rec1 mb-3">
+                    <a href="" data-toggle="collapse" data-target="#survey">Опрос</a>
+                </div>
+                <div class="rec1 mb-3">
+                    <a href="" data-toggle="collapse" data-target="#question">Вопросы</a>
+                </div>
+                <div class="rec1 mb-3">
+                    <a href="" data-toggle="collapse" data-target="#video">Видео</a>
+                </div>
+            </div>
+            <!-- Survey -->
+            <div class="collapse" id="survey">
+                <p class="module text-uppercase font-weight-bold">Опрос</p>
+                <form asp-controller="Surveys" asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-12 col-sm-2 div44 mr-5">
+                            <label for="q1">Вопрос</label>
+                            <textarea class="form-control" rows="3" id="q1"></textarea>
+                        </div>
+
+                        <div class="col-12 col-sm-1 div44">
+                            <label for="min">Мин. шкала</label>
+                            <input type="number" class="form-control">
+                        </div>
+
+                        <div class="col-12 col-sm-2 div44 mr-5">
+                            <label for="des">Описание</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <div class="col-12 col-sm-1 div44">
+                            <label for="max">Мак. шкала</label>
+                            <input type="number" class="form-control">
+                        </div>
+
+                        <div class="col-12 col-sm-2 div44">
+                            <label for="des">Описание</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap mt-4" id="save">
+                        <button class="btn btn-primary text-uppercase font-weight-bold mb-5 pt-2 pb-2 pr-4 mr-5"
+                            type="submit"><i class="fas fa-plus mr-2 pl-2"></i>Сохранить</button>
+                        <a href="" class="font-weight-bold mt-2" id="greenday">Отменить</a>
+                    </div>
+                </form>
+            </div>
+            <!-- Survey END-->
+
+            <!-- Question -->
+            <div class="collapse" id="question">
+                <p class="module text-uppercase font-weight-bold">Вопрос</p>
+                <div class="row mb-4">
+                    <div class="col-12 col-sm-1 div44">
+                        <label for="id1">№</label>
+                        <p id="id1">1</p>
+                    </div>
+
+                    <div class="col-12 col-sm-6 div44 mr-5">
+                        <label for="q1">Вопрос</label>
+                        <textarea class="form-control" rows="3" id="q1"></textarea>
+                    </div>
+            </div>
+                <div class="d-flex flex-wrap mt-4" id="save">
+                    <button class="btn btn-primary text-uppercase font-weight-bold mb-5 pt-2 pb-2 pr-4 mr-5"
+                        type="submit"><i class="fas fa-plus mr-2 pl-2"></i>Сохранить</button>
+                    <a href="" class="font-weight-bold mt-2" id="greenday">Отменить</a>
+                </div>
+            </div>
+            <!-- Question END-->
+
+            <!-- Video -->
+            <div class="collapse" id="video">
+                <p class="module text-uppercase font-weight-bold">Видео</p>
+                <div class="row">
+                    <div class="col-12 col-sm-4 div44 mr-5">
+                        <label for="q1">Название</label>
+                        <textarea class="form-control" rows="3" id="q1"></textarea>
+                    </div>
+
+                    <div class="col-12 col-sm-4 div44">
+                        <label for="b1">Url видео</label><br>
+                        <textarea class="form-control" rows="3" id="b1"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap mt-4" id="save">
+                    <button class="btn btn-primary text-uppercase font-weight-bold mb-5 pt-2 pb-2 pr-4 mr-5"
+                        type="submit"><i class="fas fa-plus mr-2 pl-2"></i>Сохранить</button>
+                    <a href="" class="font-weight-bold mt-2" id="greenday">Отменить</a>
+                </div>
+            </div>
+            <!-- Video END -->
+        </div>
+        <!-- Main content  -->
+    </main>

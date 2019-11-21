@@ -1,16 +1,11 @@
 ﻿<Properties StartupConfiguration="{ADA20055-B120-4213-8D0E-837E7E93508A}|Default">
   <MonoDevelop.Ide.ItemProperties.Tests.UnitTest01 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="courseProject/Views/UserTherapies/Index.cshtml">
-    <Files>
-      <File FileName="courseProject/Views/UserTherapies/Index.cshtml" Line="28" Column="22" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="courseProject" expanded="True" selected="True">
-            <Node name="Tests" expanded="True">
-              <Node name="UnitTest01" expanded="True" />
-            </Node>
+          <Node name="courseProject" expanded="True">
+            <Node name="Tests" expanded="True" />
             <Node name="courseProject" expanded="True" />
           </Node>
         </State>

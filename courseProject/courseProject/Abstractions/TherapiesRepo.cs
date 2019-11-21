@@ -30,7 +30,7 @@ namespace courseProject.Abstractions
             _context.Remove(therapy);
         }
 
-        public bool Exist(int id)
+        public bool Exist(string id)
         {
             return _context.Therapies.Any(m => m.Id == id);
         }
@@ -40,7 +40,7 @@ namespace courseProject.Abstractions
             return _context.Therapies.ToListAsync();
         }
 
-        public Task<Therapy> GetDetail(int? id)
+        public Task<Therapy> GetDetail(string id)
         {
             return _context.Therapies.FirstOrDefaultAsync(m => m.Id == id);
         }

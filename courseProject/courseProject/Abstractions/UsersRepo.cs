@@ -30,7 +30,7 @@ namespace courseProject.Abstractions
             _context.Remove(user);
         }
 
-        public bool Exist(int id)
+        public bool Exist(string id)
         {
             return _context.Users.Any(m => m.Id == id);
         }
@@ -40,7 +40,7 @@ namespace courseProject.Abstractions
             return _context.Users.ToListAsync();
         }
 
-        public Task<User> GetDetail(int? id)
+        public Task<User> GetDetail(string id)
         {
             return _context.Users.FirstOrDefaultAsync(m => m.Id == id);
         }
@@ -50,9 +50,6 @@ namespace courseProject.Abstractions
             return _context.SaveChangesAsync();
         }
 
-        public DbSet<Role> GetRoles()
-        {
-            return _context.Roles;
-        }
+        
     }
 }

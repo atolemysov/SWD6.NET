@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
 using courseProject.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace courseProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class VideosController : Controller
     {
         private readonly VideosService _videosService;
@@ -28,7 +30,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Videos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -47,7 +49,7 @@ namespace courseProject.Controllers
         // GET: Videos/Create
         public IActionResult Create()
         {
-            ViewData["TherapyId"] = new SelectList(_videosService.getTherapies(), "Id", "Id");
+            ViewData["TherapyId"] = new SelectList(_videosService.getTherapies(), "Id", "Therapy_Name");
             return View();
         }
 
@@ -69,7 +71,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Videos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -90,7 +92,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Desc,Url_Video,TherapyId")] Video video)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Desc,Url_Video,TherapyId")] Video video)
         {
             if (id != video.Id)
             {
@@ -122,7 +124,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Videos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -141,14 +143,14 @@ namespace courseProject.Controllers
         // POST: Videos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var video = await _videosService.DetailsVideos(id);
             await _videosService.Delete(video);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VideoExists(int id)
+        private bool VideoExists(string id)
         {
             return _videosService.VideoExis(id);
         }

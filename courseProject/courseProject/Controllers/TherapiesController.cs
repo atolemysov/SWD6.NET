@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
 using courseProject.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace courseProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TherapiesController : Controller
     {
         private readonly TherapiesService _therapiesService;
@@ -28,7 +30,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Therapies/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -67,7 +69,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Therapies/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -87,7 +89,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Therapy_Name")] Therapy therapy)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Therapy_Name")] Therapy therapy)
         {
             if (id != therapy.Id)
             {
@@ -118,7 +120,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Therapies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -137,16 +139,31 @@ namespace courseProject.Controllers
         // POST: Therapies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var therapy = await _therapiesService.DetailsTherapies(id);
             await _therapiesService.Delete(therapy);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TherapyExists(int id)
+        private bool TherapyExists(string id)
         {
             return _therapiesService.TherapyExis(id);
+        }
+
+        public async Task<IActionResult> AddContent(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var therapy = await _therapiesService.DetailsTherapies(id);
+            if (therapy == null)
+            {
+                return NotFound();
+            }
+            return View(therapy);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace courseProject.Abstractions
         void Delete(Video role);
         Task Save();
         Task<List<Video>> GetAll();
-        Task<Video> GetDetail(int? id);
-        bool Exist(int id);
+        Task<Video> GetDetail(string id);
+        bool Exist(string id);
         DbSet<Therapy> GetTherapies();
     }
 }

@@ -11,7 +11,7 @@ namespace courseProject.Abstractions
         void Delete(User_Answers role);
         Task Save();
         Task<List<User_Answers>> GetAll();
-        Task<User_Answers> GetDetail(int? id);
-        bool Exist(int id);
+        Task<User_Answers> GetDetail(string id);
+        bool Exist(string id);
     }
 }

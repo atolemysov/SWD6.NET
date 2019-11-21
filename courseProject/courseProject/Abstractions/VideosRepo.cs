@@ -30,7 +30,7 @@ namespace courseProject.Abstractions
             _context.Remove(video);
         }
 
-        public bool Exist(int id)
+        public bool Exist(string id)
         {
             return _context.Videos.Any(m => m.Id == id);
         }
@@ -40,7 +40,7 @@ namespace courseProject.Abstractions
             return _context.Videos.ToListAsync();
         }
 
-        public Task<Video> GetDetail(int? id)
+        public Task<Video> GetDetail(string id)
         {
             return _context.Videos.FirstOrDefaultAsync(m => m.Id == id);
         }

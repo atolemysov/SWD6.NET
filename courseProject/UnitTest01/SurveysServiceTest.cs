@@ -17,7 +17,7 @@ namespace UnitTest01
             var fake = Mock.Of<ISurveysRepo>();
             var surveyService = new SurveysService(fake);
 
-            var survey = new Survey() { Question = "test?", Min = 0, Desc1 = "desc1", Max = 10, Desc2="desc2", TherapyId = 3};
+            var survey = new Survey() { Question = "test?", Min = 0, Desc1 = "desc1", Max = 10, Desc2="desc2", TherapyId = "3"};
             await surveyService.AddAndSave(survey);
         }
         [Fact]
@@ -26,7 +26,7 @@ namespace UnitTest01
             var fake = Mock.Of<ISurveysRepo>();
             var surveyService = new SurveysService(fake);
 
-            var survey = new Survey() { Question = "test1?", Min = 0, Desc1 = "desc1", Max = 9, Desc2 = "desc2", TherapyId = 1 };
+            var survey = new Survey() { Question = "test1?", Min = 0, Desc1 = "desc1", Max = 9, Desc2 = "desc2", TherapyId = "1" };
             await surveyService.Update(survey);
         }
         [Fact]
@@ -34,7 +34,7 @@ namespace UnitTest01
         {
             var fake = Mock.Of<ISurveysRepo>();
             var surveyService = new SurveysService(fake);
-            var survey = new Survey() { Question = "test2?", Min = 0, Desc1 = "desc1", Max = 8, Desc2 = "desc2", TherapyId = 2 };
+            var survey = new Survey() { Question = "test2?", Min = 0, Desc1 = "desc1", Max = 8, Desc2 = "desc2", TherapyId = "2" };
             await surveyService.Delete(survey);
         }
         [Fact]
@@ -42,7 +42,7 @@ namespace UnitTest01
         {
             var fake = Mock.Of<ISurveysRepo>();
             var surveyService = new SurveysService(fake);
-            var id = 2;
+            var id = "2";
             await surveyService.DetailsSurveys(id);
         }
         [Fact]
@@ -50,8 +50,8 @@ namespace UnitTest01
         {
             var surveys = new List<Survey>
             {
-                new Survey() { Question = "test3?", Min = 0, Desc1 = "desc1", Max = 7, Desc2 = "desc2", TherapyId = 4 },
-                new Survey() { Question = "test4?", Min = 0, Desc1 = "desc1", Max = 6, Desc2 = "desc2", TherapyId = 5 },
+                new Survey() { Question = "test3?", Min = 0, Desc1 = "desc1", Max = 7, Desc2 = "desc2", TherapyId = "4" },
+                new Survey() { Question = "test4?", Min = 0, Desc1 = "desc1", Max = 6, Desc2 = "desc2", TherapyId = "5" },
         };
 
             var fakeRepositoryMock = new Mock<ISurveysRepo>();
@@ -69,7 +69,7 @@ namespace UnitTest01
                 Assert.Equal("desc1", survey.Desc1);
                 Assert.Equal(7, survey.Max);
                 Assert.Equal("desc2", survey.Desc2);
-                Assert.Equal(4, survey.TherapyId);
+                Assert.Equal("4", survey.TherapyId);
             },
             survey =>
             {
@@ -78,7 +78,7 @@ namespace UnitTest01
                 Assert.Equal("desc1", survey.Desc1);
                 Assert.Equal(6, survey.Max);
                 Assert.Equal("desc2", survey.Desc2);
-                Assert.Equal(5, survey.TherapyId);
+                Assert.Equal("5", survey.TherapyId);
             });
         }
     }

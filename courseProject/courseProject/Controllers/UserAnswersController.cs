@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace courseProject.Controllers
 {
+    [Authorize(Roles = "Patient")]
     public class UserAnswersController : Controller
     {
         private readonly MyContext _context;
@@ -27,14 +29,14 @@ namespace courseProject.Controllers
         }
 
         // GET: UserAnswers/Details/5
-        public async Task<IActionResult> Details(int? id1, int? id2)
+        public async Task<IActionResult> Details(string UserId, string SurveyId)
         {
-            if (id1 == null || id2 == null)
+            if (UserId == null || SurveyId == null)
             {
                 return NotFound();
             }
 
-            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
+            var user_Answers = await _context.User_Answers.FindAsync(UserId, SurveyId);
             if (user_Answers == null)
             {
                 return NotFound();
@@ -45,8 +47,8 @@ namespace courseProject.Controllers
         // GET: UserAnswers/Create
         public IActionResult Create()
         {
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name");
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question");
             return View();
         }
 
@@ -63,26 +65,26 @@ namespace courseProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
             return View(user_Answers);
         }
 
         // GET: UserAnswers/Edit/5
-        public async Task<IActionResult> Edit(int? id1, int? id2)
+        public async Task<IActionResult> Edit(string UserId, string SurveyId)
         {
-            if (id1 == null || id2 == null)
+            if (UserId == null || SurveyId == null)
             {
                 return NotFound();
             }
 
-            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
+            var user_Answers = await _context.User_Answers.FindAsync(UserId, SurveyId);
             if (user_Answers == null)
             {
                 return NotFound();
             }
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
             return View(user_Answers);
         }
 
@@ -91,7 +93,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,SurveyId,Answer")] User_Answers user_Answers)
+        public async Task<IActionResult> Edit(string id, [Bind("UserId,SurveyId,Answer")] User_Answers user_Answers)
         {
 
             if (ModelState.IsValid)
@@ -102,20 +104,20 @@ namespace courseProject.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Full_Name", user_Answers.UserId);
+            ViewData["SurveyId"] = new SelectList(_context.Surveys, "Id", "Question", user_Answers.SurveyId);
             return View(user_Answers);
         }
 
         // GET: UserAnswers/Delete/5
-        public async Task<IActionResult> Delete(int? id1, int? id2)
+        public async Task<IActionResult> Delete(string UserId, string SurveyId)
         {
-            if (id1 == null || id2 == null)
+            if (UserId == null || SurveyId == null)
             {
                 return NotFound();
             }
 
-            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
+            var user_Answers = await _context.User_Answers.FindAsync(UserId, SurveyId);
             if (user_Answers == null)
             {
                 return NotFound();
@@ -126,15 +128,15 @@ namespace courseProject.Controllers
         // POST: UserAnswers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id1, int id2)
+        public async Task<IActionResult> DeleteConfirmed(string UserId, string SurveyId)
         {
-            var user_Answers = await _context.User_Answers.FindAsync(id1, id2);
+            var user_Answers = await _context.User_Answers.FindAsync(UserId, SurveyId);
             _context.User_Answers.Remove(user_Answers);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool User_AnswersExists(int id)
+        private bool User_AnswersExists(string id)
         {
             return _context.User_Answers.Any(e => e.UserId == id);
         }

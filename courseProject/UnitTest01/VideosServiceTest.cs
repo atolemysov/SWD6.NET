@@ -16,7 +16,7 @@ namespace UnitTest01
             var fake = Mock.Of<IVideosRepo>();
             var videoService = new VideosService(fake);
 
-            var video = new Video() { Desc = "desc", Url_Video="url", TherapyId = 1 };
+            var video = new Video() { Desc = "desc", Url_Video="url", TherapyId = "1" };
             await videoService.AddAndSave(video);
         }
         [Fact]
@@ -25,7 +25,7 @@ namespace UnitTest01
             var fake = Mock.Of<IVideosRepo>();
             var videoService = new VideosService(fake);
 
-            var video = new Video() { Desc = "desc1", Url_Video = "url1", TherapyId = 2 };
+            var video = new Video() { Desc = "desc1", Url_Video = "url1", TherapyId = "2" };
             await videoService.Update(video);
         }
         [Fact]
@@ -33,7 +33,7 @@ namespace UnitTest01
         {
             var fake = Mock.Of<IVideosRepo>();
             var videoService = new VideosService(fake);
-            var video = new Video() { Desc = "desc2", Url_Video = "url2", TherapyId = 3 };
+            var video = new Video() { Desc = "desc2", Url_Video = "url2", TherapyId = "3" };
             await videoService.Delete(video);
         }
         [Fact]
@@ -41,7 +41,7 @@ namespace UnitTest01
         {
             var fake = Mock.Of<IVideosRepo>();
             var videoService = new VideosService(fake);
-            var id = 2;
+            var id = "2";
             await videoService.DetailsVideos(id);
         }
         [Fact]
@@ -49,8 +49,8 @@ namespace UnitTest01
         {
             var videos = new List<Video>
             {
-                new Video() { Desc = "desc3", Url_Video="url3", TherapyId = 4 },
-                new Video() { Desc = "desc4", Url_Video="url4", TherapyId = 5 },
+                new Video() { Desc = "desc3", Url_Video="url3", TherapyId = "4" },
+                new Video() { Desc = "desc4", Url_Video="url4", TherapyId = "5" },
         };
 
             var fakeRepositoryMock = new Mock<IVideosRepo>();
@@ -65,14 +65,14 @@ namespace UnitTest01
             {
                 Assert.Equal("desc3", video.Desc);
                 Assert.Equal("url3", video.Url_Video);
-                Assert.Equal(4, video.TherapyId);
+                Assert.Equal("4", video.TherapyId);
 
             },
             video =>
             {
                 Assert.Equal("desc4", video.Desc);
                 Assert.Equal("url4", video.Url_Video);
-                Assert.Equal(5, video.TherapyId);
+                Assert.Equal("5", video.TherapyId);
 
             });
         }

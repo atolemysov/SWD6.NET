@@ -41,7 +41,7 @@ namespace UnitTest01
         {
             var fake = Mock.Of<ITherapiesRepo>();
             var therapiesService = new TherapiesService(fake);
-            var id = 2;
+            var id = "2";
             await therapiesService.DetailsTherapies(id);
         }
         [Fact]

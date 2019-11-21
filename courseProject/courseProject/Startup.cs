@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using courseProject.Abstractions;
 using courseProject.Data;
+using courseProject.Models;
 using courseProject.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,10 +29,14 @@ namespace courseProject
             {
                 options.UseSqlite("Filename=icap.db");
             });
-            services.AddMvc();
 
-            services.AddScoped<RolesService>();
-            services.AddScoped<IRolesRepo, RolesRepo>();
+            //From video
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<MyContext>();
+
+
+
+            services.AddMvc();
 
             services.AddScoped<SurveysService>();
             services.AddScoped<ISurveysRepo, SurveysRepo>();
@@ -52,13 +58,16 @@ namespace courseProject
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles();
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Login}/{action=Index}/{id?}");
+                    template: "{controller=Users}/{action=Index}/{id?}");
             });
-            app.UseStaticFiles();
         }
     }
 }

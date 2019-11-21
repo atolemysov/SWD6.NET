@@ -9360,11 +9360,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/UnitTest01.csproj",
+      "projectUniqueName": "/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/UnitTest01.csproj",
       "projectName": "UnitTest01",
-      "projectPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/UnitTest01.csproj",
+      "projectPath": "/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/UnitTest01.csproj",
       "packagesPath": "/Users/nurgi17__/.nuget/packages/",
-      "outputPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/UnitTest01/obj/",
+      "outputPath": "/Users/nurgi17__/Desktop/Study/courseProject/UnitTest01/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -9381,8 +9381,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/courseProject/courseProject.csproj": {
-              "projectPath": "/Users/nurgi17__/Desktop/Study/1 семестр/SWD6(dotNet)/dotnet/SWD6.NET/courseProject/courseProject/courseProject.csproj"
+            "/Users/nurgi17__/Desktop/Study/courseProject/courseProject/courseProject.csproj": {
+              "projectPath": "/Users/nurgi17__/Desktop/Study/courseProject/courseProject/courseProject.csproj"
             }
           }
         }

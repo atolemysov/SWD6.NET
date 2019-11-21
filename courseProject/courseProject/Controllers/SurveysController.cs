@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using courseProject.Data;
 using courseProject.Models;
 using courseProject.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace courseProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SurveysController : Controller
     {
         private readonly SurveysService _surveysService;
@@ -29,7 +31,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Surveys/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -48,7 +50,7 @@ namespace courseProject.Controllers
         // GET: Surveys/Create
         public IActionResult Create()
         {
-            ViewData["TherapyId"] = new SelectList(_surveysService.getTherapies(), "Id", "Id");
+            ViewData["TherapyId"] = new SelectList(_surveysService.getTherapies(), "Id", "Therapy_Name");
             return View();
         }
 
@@ -70,7 +72,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Surveys/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -91,7 +93,7 @@ namespace courseProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Question,Min,Desc1,Max,Desc2,TherapyId")] Survey survey)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Question,Min,Desc1,Max,Desc2,TherapyId")] Survey survey)
         {
             if (id != survey.Id)
             {
@@ -123,7 +125,7 @@ namespace courseProject.Controllers
         }
 
         // GET: Surveys/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -142,14 +144,14 @@ namespace courseProject.Controllers
         // POST: Surveys/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var survey = await _surveysService.DetailsSurveys(id);
             await _surveysService.Delete(survey);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SurveyExists(int id)
+        private bool SurveyExists(string id)
         {
             return _surveysService.SurveyExis(id);
         }

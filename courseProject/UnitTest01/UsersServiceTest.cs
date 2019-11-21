@@ -17,7 +17,7 @@ namespace UnitTest01
                 var fake = Mock.Of<IUsersRepo>();
                 var userService = new UsersService(fake);
 
-                var user = new User() { Login = "login", Password = "passw", Full_Name="somebody", RoleId = 1};
+                var user = new User() {Full_Name="somebody"};
                 await userService.AddAndSave(user);
             }
             [Fact]
@@ -26,7 +26,7 @@ namespace UnitTest01
                 var fake = Mock.Of<IUsersRepo>();
                 var userService = new UsersService(fake);
 
-                var user = new User() { Login = "login1", Password = "passw1", Full_Name = "somebody1", RoleId = 2 };
+                var user = new User() {Full_Name = "somebody1"};
                 await userService.Update(user);
             }
             [Fact]
@@ -34,7 +34,7 @@ namespace UnitTest01
             {
                 var fake = Mock.Of<IUsersRepo>();
                 var userService = new UsersService(fake);
-                var user = new User() { Login = "login2", Password = "passw2", Full_Name = "somebody2", RoleId = 3 };
+                var user = new User() {Full_Name = "somebody2"};
                 await userService.Delete(user);
             }
             [Fact]
@@ -42,7 +42,7 @@ namespace UnitTest01
             {
                 var fake = Mock.Of<IUsersRepo>();
                 var userService = new UsersService(fake);
-                var id = 2;
+                var id = "2";
                 await userService.DetailsUsers(id);
             }
             [Fact]
@@ -50,8 +50,8 @@ namespace UnitTest01
             {
                 var users = new List<User>
             {
-                new User() { Login = "login3", Password = "passw3", Full_Name="somebody3", RoleId = 4 },
-                new User() { Login = "login4", Password = "passw4", Full_Name="somebody4", RoleId = 5 },
+                new User() { Full_Name="somebody3"},
+                new User() { Full_Name="somebody4"},
         };
 
                 var fakeRepositoryMock = new Mock<IUsersRepo>();
@@ -64,18 +64,15 @@ namespace UnitTest01
 
                 Assert.Collection(resultUsers, user =>
                 {
-                    Assert.Equal("login3", user.Login);
-                    Assert.Equal("passw3", user.Password);
+                    
                     Assert.Equal("somebody3", user.Full_Name);
-                    Assert.Equal(4, user.RoleId);
 
                 },
                 user =>
                 {
-                    Assert.Equal("login4", user.Login);
-                    Assert.Equal("passw4", user.Password);
+                    
                     Assert.Equal("somebody4", user.Full_Name);
-                    Assert.Equal(5, user.RoleId);
+                    
 
                 });
             }
